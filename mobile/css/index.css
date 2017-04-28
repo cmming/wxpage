@@ -12,6 +12,32 @@ body {
     font-family: "microsoft yahei";
 }
 
+/*通过使用媒体查询方式改变根字体的大小 千万不要在pc上使用rem适配，坑死你*/
+/*@media only screen and (min-width: 401px){
+    html {
+        font-size: 25px !important;
+    }
+}
+@media only screen and (min-width: 428px){
+    html {
+        font-size: 26.75px !important;
+    }
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 30px !important; 
+    }
+}
+@media only screen and (min-width: 569px){
+    html {
+        font-size: 35px !important; 
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 40px !important; 
+    }
+}*/
 .swiper-container {
     /* width: 320px;
     height: 480px;*/
