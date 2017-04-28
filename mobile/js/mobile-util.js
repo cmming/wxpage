@@ -12,6 +12,8 @@
  *              scss 中 $ppr(pixel per rem) 变量写法 -- $ppr: 750px/16/1rem;
  *                      元素尺寸写法 -- html { font-size: $ppr*1rem; } body { width: 750px/$ppr; }。
  *          相当于是将页面分为16份 而且也有一个安全宽度750px
+ *          计算规则 1rem =1/16* screenwidth  
+ *                  高度计算相当于 1/28.3 :screenHeight
 
  */
 window.mobileUtil = (function (win, doc) {
