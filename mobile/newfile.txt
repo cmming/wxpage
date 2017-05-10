@@ -25,7 +25,7 @@
                     images[i].src = preload.arguments[i]
                 }
             }
-            preload('./images/2.jpg')
+            preload("./images/2.jpg")
     </script>
 </div>
 <body>
@@ -68,8 +68,8 @@
     <script src="./js/mobile-util.js"></script>
     <script>
         window.onload = function () {
-            var mySwiper = new Swiper('.swiper-container', {
-                direction: 'vertical',
+            var mySwiper = new Swiper(".swiper-container", {
+                direction: "vertical",
                 loop: true,
                 // virtualTranslate : true,
                 mousewheelControl: true,
@@ -97,7 +97,7 @@
                         slide.style.opacity = opacity;
                         es = slide.style;
                         es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform =
-                            'translate3d(0,' + translate + 'px,-' + translate + 'px) scaleY(' + scale + ')';
+                            "translate3d(0," + translate + "px,-" + translate + "px) scaleY(" + scale + ")";
                     }
                 },
 
@@ -105,7 +105,7 @@
                     for (var i = 0; i < swiper.slides.length; i++) {
                         es = swiper.slides[i].style;
                         es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration =
-                            es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+                            es.OTransitionDuration = es.transitionDuration = speed + "ms";
                     }
                 },
             });
@@ -115,4 +115,4 @@
     
 </body>
 
-</html>
+</html>Minnie Mouse

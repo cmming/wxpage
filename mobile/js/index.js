@@ -3,8 +3,8 @@
  */
 window.onload=function(){
 
-
-scaleW = window.innerWidth / 320;
+windowsWidth=window.innerWidth>750?750:window.innerWidth;
+scaleW = window.windowsWidth / 320;
 scaleH = window.innerHeight / 480;
 var resizes = document.querySelectorAll(".resize"),resizesLen=resizes.length;
 for (var j = 0; j< resizesLen; j++) {
