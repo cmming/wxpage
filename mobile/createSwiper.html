@@ -13,6 +13,14 @@
             border: 1px solid black;
             border-sizing: border-box;
         }
+        .ani{
+            width: 40px;
+            height: 40px;
+            border:1px solid #fff;
+        }
+        .choseItem{
+            border:1px solid red;
+        }
     </style>
 </head>
 
@@ -223,9 +231,6 @@
                     height:100%;
                     vertical-align: bottom;
                 }
-                .choseItem{
-                    border:1px solid red;
-                }
             </style>
         </head>
 
@@ -366,14 +371,17 @@
                         console.log(elemHtml);
                     });
                     // 选中一个元素
-                    $('[class=^"pageItem"]').on('dblclick',function(){
-                        $(this).add
-                        // condole.log($(this).);
+                    $('.swiper-wrapper').on('click','.ani',function(){
+                        $(this).addClass('choseItem');
+                        // 为按钮设置当前激活元素
+                        $("#settingElem").attr('data-active',$(this).attr('class'));
+                        console.log($(this),$(this).attr('class'));
                     });
                     // 设置一个元素
                     $("#settingElem").on('click', function () {
                         // 找到那个元素
-                        
+                        var activeItemClass=$(this).attr('data-active')
+                        ,activeItem=$('[class="'+activeItemClass+'"]');
                         //获取元素属于那个页面
                         var pageNum = $('#choseElemPage option:selected').val()
                             // 元素大小
@@ -391,8 +399,9 @@
                             , elem_animate_duration = $('input[name="animate_duration"]').val()
                             , elem_animate_delay = $('input[name="animate_delay"]').val();
                         // 生成style样式
-                        setCss('width', elemWidth);
-                        var style = 'style="' + setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
+                        // setCss('width', elemWidth);
+                        var style =  setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
+                        // var style = 'style="' + setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
                         // 文字相关的
                         var itemContent = elemFont_content;
                         // 生成img 标签
@@ -401,15 +410,26 @@
                             imgElemHtml = '<img src="' + elemImg + '">';
                         }
                         // 动画相关的
-                        var animateAttr = "swiper-animate-effect='" + elem_animate_effect + "' swiper-animate-duration='" + elem_animate_duration + "s' " +
-                            "swiper-animate-delay='" + elem_animate_delay + "s'";
+                        // var animateAttr = "swiper-animate-effect='" + elem_animate_effect + "' swiper-animate-duration='" + elem_animate_duration + "s' " +
+                        //     "swiper-animate-delay='" + elem_animate_delay + "s'";
+                        console.log(activeItem);
+                        activeItem.attr({
+                            'swiper-animate-effect':elem_animate_effect,
+                            'swiper-animate-duration':elem_animate_duration+'s',
+                            'swiper-animate-delay':elem_animate_delay+'s',
+                            'style':style
+                        }).html(imgElemHtml);
 
-                        var elemHtml = '<div class="ani" ' + style + ' ' + animateAttr + ' >' + itemContent + imgElemHtml + '</div>';
+                        // var elemHtml = '<div class="ani" ' + style + ' ' + animateAttr + ' >' + itemContent + imgElemHtml + '</div>';
                         // $('.swiper-wrapper .page' + pageNum).append(elemHtml);
                         reAnimate(false);
                     });
                     // 生成html
                     $("#createHtml").on('click', function () {
+                        $("#showPage .swiper-slide").removeAttr("style");
+                        $(".ani").removeAttr("swiper-animate-style-cache");
+                        $('.swiper-wrapper').removeAttr("style");
+                        // swiper-animate-style-cache
                         var createHtml = $("#showPage").html();
 
                         $.ajax({
