@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
     <style lang="css">
         #showPage {
@@ -12,201 +13,245 @@
             height: 667px;
             border: 1px solid black;
             border-sizing: border-box;
+            margin: 0 auto;
         }
-        .ani{
+        
+        .ani {
             width: 40px;
             height: 40px;
-            border:1px solid #fff;
+            border: 1px solid #fff;
         }
-        .choseItem{
-            border:1px solid red;
+        
+        .choseItem {
+            border: 1px solid red;
         }
     </style>
 </head>
 
 <body>
-    当前页数：<span id="pageNum">1</span>
-    <button id="addPage">添加一页</button>
-    <br>
-    <br>
-    <br> 为
-    <select name="chosePage" class="chosePage" id="chosePage">
-        <option value="1">1</option>
-    </select>页: 
-    <input type="text" name="pageBg">
-    <button id="addPageBg">设置背景</button>
-    <br>
-    <br>
-    <br> 为
-    <select name="chosePage" class="chosePage" id="choseElemPage">
-        <option value="1">1</option>
-    </select> 页:
-    <button id="addElem">添加一一个元素</button> 
-    <br>
-    <br>
-    <br>
-    <br>
-    <!--选择元素-->
-    请选中一个元素
-    <br>
-    宽(单位1/16)：
-    <input type="text" name="elemWidth"> 高(单位1/16)：
-    <input type="text" name="elemHeight">
-    <br>
-    <br>
-    <br> 离左边的距离(百分比)：
-    <input type="text" name="elemLeft"> 离上边的距离(百分比)：
-    <input type="text" name="elemTop"> 文字：
-    <input type="text" name="font_content"> 文字大小：
-    <input type="text" name="font_size">
-    <br>
-    <br>
-    <br> 元素图片：
-    <input type="text" name="elemImg">
-    <br>
-    <br>
-    <br> 元素时间： 动画种类
-    <input type="text" name="animate_effect"> 出现延迟时间
-    <input type="text" name="animate_delay"> 动画整个时间
-    <input type="text" name="animate_duration">
+    <div class="form-horizontal container">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">
+                当前页数：<span id="pageNum">1</span>
+            </label>
+            <div class="col-sm-2">
+                <button id="addPage" class="btn btn-primary">添加一页</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">
+                为
+                <select name="chosePage" class="chosePage" id="chosePage">
+                    <option value="1">1</option>
+                </select>页:
+            </label>
+            <div class="col-sm-4">
+                <input type="text" name="pageBg" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <button id="addPageBg" class="btn btn-primary">设置背景</button>
+            </div>
+        </div>
+        <!--添加元素-->
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">
+               为
+                <select name="chosePage" class="chosePage" id="choseElemPage">
+                    <option value="1">1</option>
+                </select> 页:
+            </label>
+            <div class="col-sm-2">
+                <button id="addElem" class="btn btn-primary">添加一个元素</button>
+            </div>
+        </div>
+        <!--设置元素-->
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">
+               请选中一个元素
+            </label>
+            <div class="col-sm-2">
+                宽(单位1/16)：
+                <input type="text" name="elemWidth" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                高(单位1/16)：
+                <input type="text" name="elemHeight" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                离左边的距离(百分比)：
+                <input type="text" name="elemLeft" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                离上边的距离(百分比)：
+                <input type="text" name="elemTop" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                文字：
+                <input type="text" name="font_content" class="form-control">
+            </div>
+            <div class="col-sm-offset-2 col-sm-2">
+                文字大小：
+                <input type="text" name="font_size" class="form-control">
+            </div>
+            <div class="col-sm-offset-2 col-sm-2">
+                元素图片：
+                <input type="text" name="elemImg" class="form-control">
+            </div>
+            <div class="col-sm-offset-2 col-sm-2">
+                动画种类:
+                <input type="text" name="animate_effect" class="form-control">
+            </div>
+            <div class="col-sm-offset-2 col-sm-2">
+                出现延迟时间:
+                <input type="text" name="animate_delay" class="form-control">
+            </div>
+            <div class="col-sm-offset-2 col-sm-2">
+                动画整个时间:
+                <input type="text" name="animate_duration" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="settingElem" class="btn btn-success">添加一一个元素</button>
+                <!--<button type="button" class="btn btn-success" id="createHtml">生成html</button>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-success" id="createHtml">生成html</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <select class="input input--dropdown js--animations">
+                    <optgroup label="Attention Seekers">
+                    <option value="bounce">bounce</option>
+                    <option value="flash">flash</option>
+                    <option value="pulse">pulse</option>
+                    <option value="rubberBand">rubberBand</option>
+                    <option value="shake">shake</option>
+                    <option value="swing">swing</option>
+                    <option value="tada">tada</option>
+                    <option value="wobble">wobble</option>
+                    <option value="jello">jello</option>
+                    </optgroup>
 
-    <button id="settingElem">添加一一个元素</button>
-    <br>
-    <br>
-    <br>
-    <br>
+                    <optgroup label="Bouncing Entrances">
+                    <option value="bounceIn">bounceIn</option>
+                    <option value="bounceInDown">bounceInDown</option>
+                    <option value="bounceInLeft">bounceInLeft</option>
+                    <option value="bounceInRight">bounceInRight</option>
+                    <option value="bounceInUp">bounceInUp</option>
+                    </optgroup>
 
-    <button type="button" class="btn btn-default" id="createHtml">生成html</button>
+                    <optgroup label="Bouncing Exits">
+                    <option value="bounceOut">bounceOut</option>
+                    <option value="bounceOutDown">bounceOutDown</option>
+                    <option value="bounceOutLeft">bounceOutLeft</option>
+                    <option value="bounceOutRight">bounceOutRight</option>
+                    <option value="bounceOutUp">bounceOutUp</option>
+                    </optgroup>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <select class="input input--dropdown js--animations">
-        <optgroup label="Attention Seekers">
-          <option value="bounce">bounce</option>
-          <option value="flash">flash</option>
-          <option value="pulse">pulse</option>
-          <option value="rubberBand">rubberBand</option>
-          <option value="shake">shake</option>
-          <option value="swing">swing</option>
-          <option value="tada">tada</option>
-          <option value="wobble">wobble</option>
-          <option value="jello">jello</option>
-        </optgroup>
+                    <optgroup label="Fading Entrances">
+                    <option value="fadeIn">fadeIn</option>
+                    <option value="fadeInDown">fadeInDown</option>
+                    <option value="fadeInDownBig">fadeInDownBig</option>
+                    <option value="fadeInLeft">fadeInLeft</option>
+                    <option value="fadeInLeftBig">fadeInLeftBig</option>
+                    <option value="fadeInRight">fadeInRight</option>
+                    <option value="fadeInRightBig">fadeInRightBig</option>
+                    <option value="fadeInUp">fadeInUp</option>
+                    <option value="fadeInUpBig">fadeInUpBig</option>
+                    </optgroup>
 
-        <optgroup label="Bouncing Entrances">
-          <option value="bounceIn">bounceIn</option>
-          <option value="bounceInDown">bounceInDown</option>
-          <option value="bounceInLeft">bounceInLeft</option>
-          <option value="bounceInRight">bounceInRight</option>
-          <option value="bounceInUp">bounceInUp</option>
-        </optgroup>
+                    <optgroup label="Fading Exits">
+                    <option value="fadeOut">fadeOut</option>
+                    <option value="fadeOutDown">fadeOutDown</option>
+                    <option value="fadeOutDownBig">fadeOutDownBig</option>
+                    <option value="fadeOutLeft">fadeOutLeft</option>
+                    <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                    <option value="fadeOutRight">fadeOutRight</option>
+                    <option value="fadeOutRightBig">fadeOutRightBig</option>
+                    <option value="fadeOutUp">fadeOutUp</option>
+                    <option value="fadeOutUpBig">fadeOutUpBig</option>
+                    </optgroup>
 
-        <optgroup label="Bouncing Exits">
-          <option value="bounceOut">bounceOut</option>
-          <option value="bounceOutDown">bounceOutDown</option>
-          <option value="bounceOutLeft">bounceOutLeft</option>
-          <option value="bounceOutRight">bounceOutRight</option>
-          <option value="bounceOutUp">bounceOutUp</option>
-        </optgroup>
+                    <optgroup label="Flippers">
+                    <option value="flip">flip</option>
+                    <option value="flipInX">flipInX</option>
+                    <option value="flipInY">flipInY</option>
+                    <option value="flipOutX">flipOutX</option>
+                    <option value="flipOutY">flipOutY</option>
+                    </optgroup>
 
-        <optgroup label="Fading Entrances">
-          <option value="fadeIn">fadeIn</option>
-          <option value="fadeInDown">fadeInDown</option>
-          <option value="fadeInDownBig">fadeInDownBig</option>
-          <option value="fadeInLeft">fadeInLeft</option>
-          <option value="fadeInLeftBig">fadeInLeftBig</option>
-          <option value="fadeInRight">fadeInRight</option>
-          <option value="fadeInRightBig">fadeInRightBig</option>
-          <option value="fadeInUp">fadeInUp</option>
-          <option value="fadeInUpBig">fadeInUpBig</option>
-        </optgroup>
+                    <optgroup label="Lightspeed">
+                    <option value="lightSpeedIn">lightSpeedIn</option>
+                    <option value="lightSpeedOut">lightSpeedOut</option>
+                    </optgroup>
 
-        <optgroup label="Fading Exits">
-          <option value="fadeOut">fadeOut</option>
-          <option value="fadeOutDown">fadeOutDown</option>
-          <option value="fadeOutDownBig">fadeOutDownBig</option>
-          <option value="fadeOutLeft">fadeOutLeft</option>
-          <option value="fadeOutLeftBig">fadeOutLeftBig</option>
-          <option value="fadeOutRight">fadeOutRight</option>
-          <option value="fadeOutRightBig">fadeOutRightBig</option>
-          <option value="fadeOutUp">fadeOutUp</option>
-          <option value="fadeOutUpBig">fadeOutUpBig</option>
-        </optgroup>
+                    <optgroup label="Rotating Entrances">
+                    <option value="rotateIn">rotateIn</option>
+                    <option value="rotateInDownLeft">rotateInDownLeft</option>
+                    <option value="rotateInDownRight">rotateInDownRight</option>
+                    <option value="rotateInUpLeft">rotateInUpLeft</option>
+                    <option value="rotateInUpRight">rotateInUpRight</option>
+                    </optgroup>
 
-        <optgroup label="Flippers">
-          <option value="flip">flip</option>
-          <option value="flipInX">flipInX</option>
-          <option value="flipInY">flipInY</option>
-          <option value="flipOutX">flipOutX</option>
-          <option value="flipOutY">flipOutY</option>
-        </optgroup>
+                    <optgroup label="Rotating Exits">
+                    <option value="rotateOut">rotateOut</option>
+                    <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                    <option value="rotateOutDownRight">rotateOutDownRight</option>
+                    <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                    <option value="rotateOutUpRight">rotateOutUpRight</option>
+                    </optgroup>
 
-        <optgroup label="Lightspeed">
-          <option value="lightSpeedIn">lightSpeedIn</option>
-          <option value="lightSpeedOut">lightSpeedOut</option>
-        </optgroup>
+                    <optgroup label="Sliding Entrances">
+                    <option value="slideInUp">slideInUp</option>
+                    <option value="slideInDown">slideInDown</option>
+                    <option value="slideInLeft">slideInLeft</option>
+                    <option value="slideInRight">slideInRight</option>
 
-        <optgroup label="Rotating Entrances">
-          <option value="rotateIn">rotateIn</option>
-          <option value="rotateInDownLeft">rotateInDownLeft</option>
-          <option value="rotateInDownRight">rotateInDownRight</option>
-          <option value="rotateInUpLeft">rotateInUpLeft</option>
-          <option value="rotateInUpRight">rotateInUpRight</option>
-        </optgroup>
+                    </optgroup>
+                    <optgroup label="Sliding Exits">
+                    <option value="slideOutUp">slideOutUp</option>
+                    <option value="slideOutDown">slideOutDown</option>
+                    <option value="slideOutLeft">slideOutLeft</option>
+                    <option value="slideOutRight">slideOutRight</option>
+                    
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Entrances">
+                    <option value="zoomIn">zoomIn</option>
+                    <option value="zoomInDown">zoomInDown</option>
+                    <option value="zoomInLeft">zoomInLeft</option>
+                    <option value="zoomInRight">zoomInRight</option>
+                    <option value="zoomInUp">zoomInUp</option>
+                    </optgroup>
+                    
+                    <optgroup label="Zoom Exits">
+                    <option value="zoomOut">zoomOut</option>
+                    <option value="zoomOutDown">zoomOutDown</option>
+                    <option value="zoomOutLeft">zoomOutLeft</option>
+                    <option value="zoomOutRight">zoomOutRight</option>
+                    <option value="zoomOutUp">zoomOutUp</option>
+                    </optgroup>
 
-        <optgroup label="Rotating Exits">
-          <option value="rotateOut">rotateOut</option>
-          <option value="rotateOutDownLeft">rotateOutDownLeft</option>
-          <option value="rotateOutDownRight">rotateOutDownRight</option>
-          <option value="rotateOutUpLeft">rotateOutUpLeft</option>
-          <option value="rotateOutUpRight">rotateOutUpRight</option>
-        </optgroup>
-
-        <optgroup label="Sliding Entrances">
-          <option value="slideInUp">slideInUp</option>
-          <option value="slideInDown">slideInDown</option>
-          <option value="slideInLeft">slideInLeft</option>
-          <option value="slideInRight">slideInRight</option>
-
-        </optgroup>
-        <optgroup label="Sliding Exits">
-          <option value="slideOutUp">slideOutUp</option>
-          <option value="slideOutDown">slideOutDown</option>
-          <option value="slideOutLeft">slideOutLeft</option>
-          <option value="slideOutRight">slideOutRight</option>
-          
-        </optgroup>
-        
-        <optgroup label="Zoom Entrances">
-          <option value="zoomIn">zoomIn</option>
-          <option value="zoomInDown">zoomInDown</option>
-          <option value="zoomInLeft">zoomInLeft</option>
-          <option value="zoomInRight">zoomInRight</option>
-          <option value="zoomInUp">zoomInUp</option>
-        </optgroup>
-        
-        <optgroup label="Zoom Exits">
-          <option value="zoomOut">zoomOut</option>
-          <option value="zoomOutDown">zoomOutDown</option>
-          <option value="zoomOutLeft">zoomOutLeft</option>
-          <option value="zoomOutRight">zoomOutRight</option>
-          <option value="zoomOutUp">zoomOutUp</option>
-        </optgroup>
-
-        <optgroup label="Specials">
-          <option value="hinge">hinge</option>
-          <option value="rollIn">rollIn</option>
-          <option value="rollOut">rollOut</option>
-        </optgroup>
-      </select>
+                    <optgroup label="Specials">
+                    <option value="hinge">hinge</option>
+                    <option value="rollIn">rollIn</option>
+                    <option value="rollOut">rollOut</option>
+                    </optgroup>
+                </select>
+                <button class="butt js--triggerAnimation btn btn-primary">Animate it</button>
+                <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
+            </div>
+        </div>
+    </div>
 
 
-    <button class="butt js--triggerAnimation">Animate it</button>
-    <button class="ceshi" id="ceshi">123</button>
-    <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
+
+
+    
 
     <div id="showPage">
         <!DOCTYPE html>
@@ -228,7 +273,7 @@
                 
                 .ani img {
                     width: 100%;
-                    height:100%;
+                    height: 100%;
                     vertical-align: bottom;
                 }
             </style>
@@ -326,9 +371,6 @@
                 }
 
                 $(document).ready(function () {
-                    $('#ceshi').on('click', function () {
-                        console.log(1);
-                    });
                     $('.js--triggerAnimation').click(function (e) {
                         e.preventDefault();
                         var anim = $('.js--animations').val();
@@ -350,6 +392,7 @@
                         var pageHtml = '<section class="swiper-slide swiper-slide1 ' + classPageNum + '"></section>';
                         $('.chosePage').append('<option value="' + (Number(pageNum) + 1) + '">' + (Number(pageNum) + 1) + '</option>');
                         $('.swiper-wrapper').append(pageHtml);
+                        console.log();
                         reAnimate(false);
                     });
                     //为不同的页面添加背景 向上腾娱乐标签中添加数据
@@ -361,27 +404,27 @@
                         reAnimate(false);
                     });
                     // 添加一个元素
-                    $("#addElem").on('click',function(){
+                    $("#addElem").on('click', function () {
                         var pageNum = $('#choseElemPage option:selected').val();
                         // 为元素生成时间戳的id
-                        var itemClassName='pageItem'+new Date().getTime();
-                        var elemHtml = '<div class="ani '+itemClassName+'"></div>';
+                        var itemClassName = 'pageItem' + new Date().getTime();
+                        var elemHtml = '<div class="ani ' + itemClassName + '"></div>';
                         // 将其放置到里面去
                         $('.swiper-wrapper .page' + pageNum).append(elemHtml);
                         console.log(elemHtml);
                     });
                     // 选中一个元素
-                    $('.swiper-wrapper').on('click','.ani',function(){
+                    $('.swiper-wrapper').on('click', '.ani', function () {
                         $(this).addClass('choseItem');
                         // 为按钮设置当前激活元素
-                        $("#settingElem").attr('data-active',$(this).attr('class'));
-                        console.log($(this),$(this).attr('class'));
+                        $("#settingElem").attr('data-active', $(this).attr('class'));
+                        console.log($(this), $(this).attr('class'));
                     });
                     // 设置一个元素
                     $("#settingElem").on('click', function () {
                         // 找到那个元素
-                        var activeItemClass=$(this).attr('data-active')
-                        ,activeItem=$('[class="'+activeItemClass+'"]');
+                        var activeItemClass = $(this).attr('data-active')
+                            , activeItem = $('[class="' + activeItemClass + '"]');
                         //获取元素属于那个页面
                         var pageNum = $('#choseElemPage option:selected').val()
                             // 元素大小
@@ -400,7 +443,7 @@
                             , elem_animate_delay = $('input[name="animate_delay"]').val();
                         // 生成style样式
                         // setCss('width', elemWidth);
-                        var style =  setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
+                        var style = setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
                         // var style = 'style="' + setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
                         // 文字相关的
                         var itemContent = elemFont_content;
@@ -414,10 +457,10 @@
                         //     "swiper-animate-delay='" + elem_animate_delay + "s'";
                         console.log(activeItem);
                         activeItem.attr({
-                            'swiper-animate-effect':elem_animate_effect,
-                            'swiper-animate-duration':elem_animate_duration+'s',
-                            'swiper-animate-delay':elem_animate_delay+'s',
-                            'style':style
+                            'swiper-animate-effect': elem_animate_effect,
+                            'swiper-animate-duration': elem_animate_duration + 's',
+                            'swiper-animate-delay': elem_animate_delay + 's',
+                            'style': style
                         }).html(imgElemHtml);
 
                         // var elemHtml = '<div class="ani" ' + style + ' ' + animateAttr + ' >' + itemContent + imgElemHtml + '</div>';
