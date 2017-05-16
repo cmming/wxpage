@@ -74,7 +74,7 @@
                 <input type="text" name="elemWidth" class="form-control">
             </div>
             <div class="col-sm-2">
-                高(单位1/16)：
+                高(百分比)：
                 <input type="text" name="elemHeight" class="form-control">
             </div>
             <div class="col-sm-2">
@@ -443,7 +443,7 @@
                             , elem_animate_delay = $('input[name="animate_delay"]').val();
                         // 生成style样式
                         // setCss('width', elemWidth);
-                        var style = setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
+                        var style = setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, '%') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
                         // var style = 'style="' + setCss('width', elemWidth, 'rem') + setCss('height', elemHeight, 'rem') + setCss('left', elemLeft, 'vh') + setCss('top', elemTop, 'vh') + setCss('font-size', elemFont_size, 'rem') + '"';
                         // 文字相关的
                         var itemContent = elemFont_content;
