@@ -85,13 +85,18 @@
                 离上边的距离(百分比)：
                 <input type="text" name="elemTop" class="form-control">
             </div>
-            <div class="col-sm-2">
+            <!--<div class="col-sm-2">
                 文字：
                 <input type="text" name="font_content" class="form-control">
             </div>
             <div class="col-sm-offset-2 col-sm-2">
                 文字大小：
                 <input type="text" name="font_size" class="form-control">
+            </div>-->
+
+            <div class="col-sm-offset-2 col-sm-2">
+                跳转路径：
+                <input type="text" name="elemHref" class="form-control">
             </div>
             <div class="col-sm-offset-2 col-sm-2">
                 元素图片：
@@ -112,13 +117,8 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button id="settingElem" class="btn btn-success">添加一一个元素</button>
+                <button id="settingElem" class="btn btn-success">设置元素属性</button>
                 <!--<button type="button" class="btn btn-success" id="createHtml">生成html</button>-->
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-success" id="createHtml">生成html</button>
             </div>
         </div>
         <div class="form-group">
@@ -246,6 +246,11 @@
                 <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Animate.css</h1></span>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-success" id="createHtml">生成html</button>
+            </div>
+        </div>
     </div>
 
 
@@ -337,6 +342,13 @@
                 window.onload = function () {
                     reAnimate(false);
                 }
+                var eventHandle = function (obj, type, fn) {
+                    if (obj.addEventListener) {
+                        obj.addEventListener(type, fn, false)
+                    } else if (obj.attachEvent) {
+                        obj.attachEvent('on' + type, fn)
+                    }
+                };
             </script>
         </body>
 
@@ -435,6 +447,8 @@
                             // 元素的文字
                             , elemFont_content = $('input[name="font_content"]').val()
                             , elemFont_size = $('input[name="font_size"]').val()
+                            // 元素跳转链接
+                            , elemHref = $('input[name="elemHref"]').val()
                             // 元素图片
                             , elemImg = $('input[name="elemImg"]').val()
                             // 动画相关设置
@@ -462,9 +476,23 @@
                             'swiper-animate-delay': elem_animate_delay + 's',
                             'style': style
                         }).html(imgElemHtml);
-
-                        // var elemHtml = '<div class="ani" ' + style + ' ' + animateAttr + ' >' + itemContent + imgElemHtml + '</div>';
-                        // $('.swiper-wrapper .page' + pageNum).append(elemHtml);
+                        if(elemHref){
+                            var activeItemClassArr=activeItemClass.split(" "),activeItemClassLen=activeItemClassArr.length,curHrefClass='';
+                            for(var i=0;i<activeItemClassLen;i++){
+                                if(activeItemClassArr[i].indexOf('pageItem')!=-1){
+                                    curHrefClass=activeItemClassArr[i];
+                                }
+                            }
+                            // pageHrefStr="$('."+curHrefClass+"')"+
+                            // ".on('click',function(){"+
+                            //      "window.location.href='"+ elemHref+"';"+
+                            //  "});"
+                            // 避免引入jquery
+                            pageHrefStr="eventHandle(document.getElementsByClassName('"+curHrefClass+"')[0],'click',function(){window.location.href = '"+elemHref+"';})";
+                             
+                            $('#showPage script').eq(-1).append(pageHrefStr);
+                            
+                        }
                         reAnimate(false);
                     });
                     // 生成html

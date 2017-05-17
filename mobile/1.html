@@ -1,90 +1,105 @@
+<meta charset="utf-8">
 
-        
-        
 
-        
-            <meta charset="utf-8">
-            <meta name="renderer" content="webkit">
-            <title>VRwedding</title>
 
-            <link rel="stylesheet" href="./css/swiper.min.css">
-            <link rel="stylesheet" href="./css/animate.min.css">
-            <link rel="stylesheet" href="./css/index.css">
-            <style>
-                .main {
-                    max-width: 750px;
-                    margin: 0 auto;
+
+<meta name="renderer" content="webkit">
+<title>title</title>
+
+<link rel="stylesheet" href="./css/swiper.min.css">
+<link rel="stylesheet" href="./css/animate.min.css">
+<link rel="stylesheet" href="./css/index.css">
+<style>
+    .main {
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
+    .ani img {
+        width: 100%;
+        height: 100%;
+        vertical-align: bottom;
+    }
+
+    .page1 {
+        background-image: url(./images/1.jpg);
+        height: 100%
+    }
+
+    .page2 {
+        background-image: url(./images/2.jpg);
+        height: 100%
+    }
+</style>
+
+
+
+<div class="swiper-container main swiper-container-vertical">
+    <div class="swiper-wrapper">
+        <section class="swiper-slide swiper-slide1 page1 swiper-slide-active">
+            <div class="ani pageItem1494988102597 choseItem  bounceInLeft animated" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s"
+                swiper-animate-delay="0s" style="width: 5rem; height: 23%; left: 23vh; top: 23vh; visibility: visible;animation-duration:1s;-webkit-animation-duration:1s;animation-delay:0s;-webkit-animation-delay:0s;"><img src="./images/2.jpg"></div>
+        </section>
+        <section class="swiper-slide swiper-slide1 page2 swiper-slide-next"></section>
+    </div>
+    <img src="images/arrow.png" style="width:1rem;height:1rem; bottom:1rem; left:7.5rem;" id="array" class="resize">
+</div>
+<script src="./js/swiper.min.js"></script>
+<script src="./js/swiper.animate.min.js"></script>
+<script src="./js/mobile-util.js"></script>
+<script>
+    function reAnimate(isLoop) {
+        return mySwiper = new Swiper(".swiper-container", {
+            direction: "vertical",
+            loop: isLoop,
+            // virtualTranslate : true,
+            mousewheelControl: true,
+            onInit: function (swiper) {
+                swiperAnimateCache(swiper);
+                swiperAnimate(swiper);
+            },
+            onSlideChangeEnd: function (swiper) {
+                swiperAnimate(swiper);
+            },
+            onTransitionEnd: function (swiper) {
+                swiperAnimate(swiper);
+            },
+
+
+            watchSlidesProgress: true,
+
+            onProgress: function (swiper) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    var slide = swiper.slides[i];
+                    var progress = slide.progress;
+                    var translate = progress * swiper.height / 4;
+                    scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
+                    var opacity = 1 - Math.min(Math.abs(progress / 2), 0.5);
+                    slide.style.opacity = opacity;
+                    es = slide.style;
+                    es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform =
+                        "translate3d(0," + translate + "px,-" + translate + "px) scaleY(" + scale + ")";
                 }
-                
-                .ani img {
-                    width: 100%;
-                    height:100%;
-                    vertical-align: bottom;
+            },
+
+            onSetTransition: function (swiper, speed) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    es = swiper.slides[i].style;
+                    es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration =
+                        es.OTransitionDuration = es.transitionDuration = speed + "ms";
                 }
-            .page1{background-image: url(./images/1.jpg);height: 100%}</style>
-        
-
-        
-            <div class="swiper-container main swiper-container-vertical">
-                <div class="swiper-wrapper">
-                    <section class="swiper-slide swiper-slide1 page1 swiper-slide-active" style="height: 667px; opacity: 1; transform: translate3d(0px, 0px, 0px) scaleY(1);">
-                    <div class="ani  bounceInLeft animated" style="width: 4rem; height: 4rem; left: 23vh; top: 23vh; visibility: visible;animation-duration:1s;-webkit-animation-duration:1s;animation-delay:0s;-webkit-animation-delay:0s;" swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="0s" swiper-animate-style-cache="width:4rem;height:4rem;left:23vh;top:23vh;"><img src="./images/2.jpg"></div></section>
-                </div>
-                <img src="images/arrow.png" style="width:1rem;height:1rem; bottom:1rem; left:7.5rem;" id="array" class="resize">
-            </div>
-            <script src="./js/swiper.min.js"></script>
-            <script src="./js/swiper.animate.min.js"></script>
-            <script src="./js/mobile-util.js"></script>
-            <script>
-                function reAnimate(isLoop) {
-                    return mySwiper = new Swiper(".swiper-container", {
-                        direction: "vertical",
-                        loop: isLoop,
-                        // virtualTranslate : true,
-                        mousewheelControl: true,
-                        onInit: function (swiper) {
-                            swiperAnimateCache(swiper);
-                            swiperAnimate(swiper);
-                        },
-                        onSlideChangeEnd: function (swiper) {
-                            swiperAnimate(swiper);
-                        },
-                        onTransitionEnd: function (swiper) {
-                            swiperAnimate(swiper);
-                        },
-
-
-                        watchSlidesProgress: true,
-
-                        onProgress: function (swiper) {
-                            for (var i = 0; i < swiper.slides.length; i++) {
-                                var slide = swiper.slides[i];
-                                var progress = slide.progress;
-                                var translate = progress * swiper.height / 4;
-                                scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
-                                var opacity = 1 - Math.min(Math.abs(progress / 2), 0.5);
-                                slide.style.opacity = opacity;
-                                es = slide.style;
-                                es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform =
-                                    "translate3d(0," + translate + "px,-" + translate + "px) scaleY(" + scale + ")";
-                            }
-                        },
-
-                        onSetTransition: function (swiper, speed) {
-                            for (var i = 0; i < swiper.slides.length; i++) {
-                                es = swiper.slides[i].style;
-                                es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration =
-                                    es.OTransitionDuration = es.transitionDuration = speed + "ms";
-                            }
-                        },
-                    });
-                }
-                window.onload = function () {
-                    reAnimate(false);
-                }
-            </script>
-        
-
-        
-
-    
+            },
+        });
+    }
+    window.onload = function () {
+        reAnimate(false);
+    }
+    var eventHandle = function (obj, type, fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(type, fn, false)
+        } else if (obj.attachEvent) {
+            obj.attachEvent('on' + type, fn)
+        }
+    };
+    eventHandle(document.getElementsByClassName('pageItem1494988102597')[0], 'click', function () { window.location.href = 'http://www.swiper.com.cn/about/us/index.html'; })
+</script>
