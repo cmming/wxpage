@@ -62,6 +62,9 @@ $txt = $htmlStr;
 fwrite($myfile, $txt);
 
 // fwrite($myfile, $txt);
+//定义文件的生成路径
+$down_zip = './resource/'.time().'.zip';
+
 
 fclose($myfile);
 if(file_exists($filename.".html")){
@@ -70,11 +73,14 @@ if(file_exists($filename.".html")){
     './'.$filename.".html"
     );
     $files_to_zip = array_merge($files_to_zip_html,$filePath);
-    var_dump($files_to_zip);
     // if true, good; if false, zip creation failed
-    $result = create_zip($files_to_zip,'my-archive.zip');
+    $result = create_zip($files_to_zip,$down_zip);
 }
 
+// $out_data['data'] = 'http://192.168.0.88/cmGit/wxpage/mobile/'.$down_zip;
+$out_data['data'] = 'http://47.94.201.5/wxpage/mobile/'.$down_zip;
+$out_data['code'] = '200';
 
-// echo $htmlStr;
+
+echo  json_encode($out_data);
 ?>
